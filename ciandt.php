@@ -54,10 +54,21 @@ function ciandt($totalMemory=0, $foregroundApps = [], $backgroundApps = [])
 		}
 	}
 
-	// $tempArr = $resultArr;
-	// foreach ($resultArr as $key => $record) {
-	// 	$tempArr[$resultArr[$key][0]] = $resultArr
-	// }
+	for ($i=1; $i <= count($resultArr) - 1; $i++) {
+		for ($j=$i + 1; $j <= count($resultArr); $j++) { 
+			if(isset($resultArr[$i]) && isset($resultArr[$j])){
+				if($resultArr[$i][2] > $resultArr[$j][2]){
+					unset($resultArr[$j]);
+					break;
+				}elseif($resultArr[$i][2] < $resultArr[$j][2]){
+					unset($resultArr[$i]);
+					break;
+
+
+				}
+			}
+		}
+	}
 
 	return $resultArr;
 }
